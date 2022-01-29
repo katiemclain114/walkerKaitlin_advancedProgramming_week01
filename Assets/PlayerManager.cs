@@ -10,6 +10,7 @@ public class PlayerManager : MonoBehaviour
 
     private void Start()
     {
+        Services.PlayerManager = this;
         rbPlayer = GetComponent<Rigidbody>();
     }
 

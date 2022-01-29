@@ -10,6 +10,12 @@ public class CollectablePickUp : MonoBehaviour
         if (other.tag == "Player")
         {
             Debug.Log("pick up cube");
+            Services.CollectableManager.CollectablePickUp(this.gameObject);
         }
+        else
+        {
+            Services.CollectableManager.DestroyPickUp(this.gameObject);
+        }
+        
     }
 }
