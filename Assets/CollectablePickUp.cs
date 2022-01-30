@@ -12,7 +12,7 @@ public class CollectablePickUp : MonoBehaviour
             Debug.Log("pick up cube");
             Services.CollectableManager.CollectablePickUp(this.gameObject);
         }
-        else
+        else if(other.tag == "Enemy")
         {
             Services.CollectableManager.DestroyPickUp(this.gameObject);
         }

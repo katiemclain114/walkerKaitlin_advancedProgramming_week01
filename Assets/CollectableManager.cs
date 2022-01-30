@@ -16,9 +16,10 @@ public class CollectableManager : MonoBehaviour
 
     private float timer;
 
-    private void Start()
+    private void Awake()
     {
         Services.CollectableManager = this;
+        SpawnCollectable();
     }
 
     private void Update()

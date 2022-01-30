@@ -1,18 +1,33 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class EnemyManager : MonoBehaviour
 {
     [SerializeField] private GameObject prefabEnemy;
+    [SerializeField] private bool spawnNewEnemies;
+    [SerializeField] private int spawnNumberAtStart;
     [SerializeField] private float timeBetweenEnemySpawn = 4f;
     [SerializeField] private float xMin, xMax, zMin, zMax, yPosition;
+    public float enemySpeed = 1;
     
     private float timer;
 
-    public void EnemyUpdate()
+    private void Start()
     {
-        EnemySpawnTimer();
+        Services.EnemyManager = this;
+
+        for (int i = 0; i < spawnNumberAtStart; i++)
+        {
+            EnemySpawner();
+        }
+    }
+
+    public void Update()
+    {
+        if(spawnNewEnemies) EnemySpawnTimer();
     }
 
     private void EnemySpawnTimer()
